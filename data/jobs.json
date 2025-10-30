@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Data Analyst",
+    "company": "Infosys",
+    "location": "Bangalore",
+    "salary": "₹8,00,000",
+    "apply_link": "https://careers.infosys.com/job/123"
+  },
+  {
+    "title": "Business Analyst",
+    "company": "TCS",
+    "location": "Pune",
+    "salary": "₹12,00,000",
+    "apply_link": "https://tcs.com/careers/job/456"
+  },
+  {
+    "title": "Data Scientist",
+    "company": "Accenture",
+    "location": "Mumbai",
+    "salary": "₹20,00,000",
+    "apply_link": "https://accenture.com/careers/789"
+  },
+  {
+    "title": "ML Engineer",
+    "company": "Tech Mahindra",
+    "location": "Remote",
+    "salary": "₹25,00,000",
+    "apply_link": "https://techmahindra.com/jobs/321"
+  }
+]

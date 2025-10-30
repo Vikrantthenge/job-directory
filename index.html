@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vikrant's Job Directory</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Vikrant’s Job Directory</h1>
+    <p>Discover real job opportunities in Data & Analytics</p>
+  </header>
+
+  <section class="filters">
+    <input type="text" id="search" placeholder="Search job title..." onkeyup="filterJobs()">
+    <select id="location" onchange="filterJobs()">
+      <option value="">All Locations</option>
+      <option value="Bangalore">Bangalore</option>
+      <option value="Pune">Pune</option>
+      <option value="Mumbai">Mumbai</option>
+      <option value="Remote">Remote</option>
+    </select>
+    <select id="salary" onchange="filterJobs()">
+      <option value="">All Salaries</option>
+      <option value="low">Below ₹10L</option>
+      <option value="mid">₹10L–₹20L</option>
+      <option value="high">Above ₹20L</option>
+    </select>
+  </section>
+
+  <main id="job-list"></main>
+
+    <section class="charts">
+    <h2>Job Analytics</h2>
+    <div class="chart-container">
+      <canvas id="chartLocation"></canvas>
+      <canvas id="chartCompany"></canvas>
+    </div>
+  </section>
+
+  <footer>
+    <p>Built by Vikrant Thenge | Data & Analytics Professional</p>
+  </footer>
+
+  <!-- Chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+
+  <footer>
+    

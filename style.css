@@ -1,0 +1,104 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background: #f8f9fa;
+  margin: 0;
+  color: #333;
+}
+
+header {
+  background: #003366;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem;
+}
+
+.filters input, .filters select {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+#job-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1.5rem 2rem;
+}
+
+.job-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  padding: 1rem 1.5rem;
+  transition: transform 0.2s;
+}
+
+.job-card:hover {
+  transform: translateY(-5px);
+}
+
+.job-card h3 {
+  margin: 0 0 0.5rem;
+  color: #003366;
+}
+
+.job-card p {
+  margin: 0.2rem 0;
+}
+
+.apply-btn {
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  display: inline-block;
+  border-radius: 6px;
+  margin-top: 0.8rem;
+  font-weight: 500;
+}
+
+.apply-btn:hover {
+  background: #0056b3;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #f1f1f1;
+  font-size: 0.9rem;
+}
+
+.charts {
+  background: #ffffff;
+  margin: 2rem 1rem;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.charts h2 {
+  text-align: center;
+  color: #003366;
+  margin-bottom: 1.5rem;
+}
+
+.chart-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.chart-container canvas {
+  max-width: 400px;
+  width: 100%;
+}
