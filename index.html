@@ -6,10 +6,11 @@
   <title>Job Directory | Vikrant Thenge</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <header>
     <h1>Job Directory</h1>
-    <p>Find live job listings using JSearch API (Free Version)</p>
+    <p>Find live job listings using the free JSearch API</p>
   </header>
 
   <section class="search-section">
@@ -23,6 +24,12 @@
     <button id="searchBtn">Search Jobs</button>
   </section>
 
+  <section class="resume-section">
+    <h2>Upload Your Resume</h2>
+    <input type="file" id="resumeUpload" accept=".pdf,.doc,.docx" />
+    <p id="resumeStatus">No file uploaded</p>
+  </section>
+
   <div id="loading" class="hidden">Loading jobs...</div>
   <main id="jobContainer"></main>
 
@@ -30,6 +37,92 @@
     <p>© 2025 <strong>Vikrant Thenge</strong> | Powered by JSearch API</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const searchBtn = document.getElementById("searchBtn");
+    const jobContainer = document.getElementById("jobContainer");
+    const loading = document.getElementById("loading");
+    const resumeUpload = document.getElementById("resumeUpload");
+    const resumeStatus = document.getElementById("resumeStatus");
+
+    let uploadedResume = null;
+
+    resumeUpload.addEventListener("change", () => {
+      const file = resumeUpload.files[0];
+      if (file) {
+        uploadedResume = file;
+        resumeStatus.textContent = `Uploaded: ${file.name}`;
+      } else {
+        resumeStatus.textContent = "No file uploaded";
+      }
+    });
+
+    async function fetchJobs() {
+      const keyword = document.getElementById("keyword").value.trim();
+      const location = document.getElementById("location").value.trim();
+      const remote = document.getElementById("remoteFilter").value;
+      const minSalary = document.getElementById("minSalary").value;
+
+      if (!keyword) {
+        alert("Please enter a job title.");
+        return;
+      }
+
+      jobContainer.innerHTML = "";
+      loading.classList.remove("hidden");
+
+      const url = `https://jsearch.p.rapidapi.com/search?query=${keyword} in ${location || "India"}&page=1&remote_jobs_only=${remote}`;
+      const options = {
+        method: "GET",
+        headers: {
+          "x-rapidapi-key": "YOUR_RAPIDAPI_KEY_HERE",
+          "x-rapidapi-host": "jsearch.p.rapidapi.com"
+        }
+      };
+
+      try {
+        const response = await fetch(url, options);
+        const data = await response.json();
+
+        loading.classList.add("hidden");
+
+        if (!data.data || data.data.length === 0) {
+          jobContainer.innerHTML = "<p>No jobs found.</p>";
+          return;
+        }
+
+        data.data.forEach(job => {
+          const card = document.createElement("div");
+          card.classList.add("job-card");
+
+          card.innerHTML = `
+            <h3>${job.job_title}</h3>
+            <p><strong>Company:</strong> ${job.employer_name || "N/A"}</p>
+            <p><strong>Location:</strong> ${job.job_city || "N/A"}, ${job.job_country}</p>
+            <p><strong>Salary:</strong> ${job.job_min_salary ? `₹${job.job_min_salary} - ₹${job.job_max_salary || ""}` : "Not specified"}</p>
+            <a href="${job.job_apply_link}" target="_blank" class="apply-btn">Apply Now</a>
+            <button class="upload-btn">Apply Here with Resume</button>
+          `;
+
+          const uploadBtn = card.querySelector(".upload-btn");
+          uploadBtn.addEventListener("click", () => {
+            if (uploadedResume) {
+              alert(`Application submitted to ${job.employer_name} with your resume: ${uploadedResume.name}`);
+            } else {
+              alert("Please upload your resume first.");
+            }
+          });
+
+          jobContainer.appendChild(card);
+        });
+
+      } catch (error) {
+        loading.classList.add("hidden");
+        jobContainer.innerHTML = "<p>Failed to fetch jobs. Please try again.</p>";
+        console.error(error);
+      }
+    }
+
+    searchBtn.addEventListener("click", fetchJobs);
+  </script>
 </body>
 </html>
