@@ -1,104 +1,106 @@
-body {
+* {
+  box-sizing: border-box;
   font-family: "Roboto", sans-serif;
-  background: #f8f9fa;
+}
+
+body {
   margin: 0;
+  background-color: #f7f9fc;
   color: #333;
 }
 
 header {
-  background: #003366;
-  color: white;
   text-align: center;
+  background: #0073e6;
+  color: white;
   padding: 2rem 1rem;
 }
 
-.filters {
+.search-section {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  margin: 1.5rem;
+  padding: 1rem;
+  background: #fff;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-.filters input, .filters select {
-  padding: 0.6rem 1rem;
-  font-size: 1rem;
+.search-section input,
+.search-section select {
+  padding: 0.6rem;
+  width: 200px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
-#job-list {
+button {
+  background: #0073e6;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #005bb5;
+}
+
+#jobContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  padding: 0 1.5rem 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
 }
 
 .job-card {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  padding: 1rem 1.5rem;
-  transition: transform 0.2s;
-}
-
-.job-card:hover {
-  transform: translateY(-5px);
+  background: #fff;
+  padding: 1.2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .job-card h3 {
-  margin: 0 0 0.5rem;
-  color: #003366;
+  margin: 0 0 10px;
 }
 
 .job-card p {
-  margin: 0.2rem 0;
+  margin: 4px 0;
 }
 
 .apply-btn {
-  background: #007bff;
-  color: white;
-  text-decoration: none;
-  padding: 0.6rem 1rem;
   display: inline-block;
-  border-radius: 6px;
-  margin-top: 0.8rem;
-  font-weight: 500;
+  margin-top: 10px;
+  background: #28a745;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .apply-btn:hover {
-  background: #0056b3;
+  background: #218838;
 }
 
 footer {
   text-align: center;
   padding: 1rem;
-  background: #f1f1f1;
+  background: #fff;
+  border-top: 1px solid #eee;
   font-size: 0.9rem;
 }
 
-.charts {
-  background: #ffffff;
-  margin: 2rem 1rem;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-}
-
-.charts h2 {
+#loading {
   text-align: center;
-  color: #003366;
-  margin-bottom: 1.5rem;
+  font-weight: bold;
+  color: #0073e6;
+  padding: 1rem;
 }
 
-.chart-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.chart-container canvas {
-  max-width: 400px;
-  width: 100%;
+.hidden {
+  display: none;
 }

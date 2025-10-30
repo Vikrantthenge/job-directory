@@ -1,51 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vikrant's Job Directory</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Directory | Vikrant Thenge</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Vikrant’s Job Directory</h1>
-    <p>Discover real job opportunities in Data & Analytics</p>
+    <h1>Job Directory</h1>
+    <p>Find live job listings using JSearch API (Free Version)</p>
   </header>
 
-  <section class="filters">
-    <input type="text" id="search" placeholder="Search job title..." onkeyup="filterJobs()">
-    <select id="location" onchange="filterJobs()">
-      <option value="">All Locations</option>
-      <option value="Bangalore">Bangalore</option>
-      <option value="Pune">Pune</option>
-      <option value="Mumbai">Mumbai</option>
-      <option value="Remote">Remote</option>
+  <section class="search-section">
+    <input type="text" id="keyword" placeholder="Job title (e.g. Data Analyst)" />
+    <input type="text" id="location" placeholder="Location (e.g. Mumbai)" />
+    <select id="remoteFilter">
+      <option value="">All Jobs</option>
+      <option value="true">Remote Only</option>
     </select>
-    <select id="salary" onchange="filterJobs()">
-      <option value="">All Salaries</option>
-      <option value="low">Below ₹10L</option>
-      <option value="mid">₹10L–₹20L</option>
-      <option value="high">Above ₹20L</option>
-    </select>
+    <input type="number" id="minSalary" placeholder="Min Salary (INR)" />
+    <button id="searchBtn">Search Jobs</button>
   </section>
 
-  <main id="job-list"></main>
-
-    <section class="charts">
-    <h2>Job Analytics</h2>
-    <div class="chart-container">
-      <canvas id="chartLocation"></canvas>
-      <canvas id="chartCompany"></canvas>
-    </div>
-  </section>
+  <div id="loading" class="hidden">Loading jobs...</div>
+  <main id="jobContainer"></main>
 
   <footer>
-    <p>Built by Vikrant Thenge | Data & Analytics Professional</p>
+    <p>© 2025 <strong>Vikrant Thenge</strong> | Powered by JSearch API</p>
   </footer>
 
-  <!-- Chart.js library -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script.js"></script>
-
-  <footer>
-    
+</body>
+</html>
